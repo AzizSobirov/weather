@@ -1,0 +1,140 @@
+<!--Created By Aziz Sobirov-->
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/3c5be74ba6.js"></script>
+        <title>Weather Web</title>
+    </head>
+    <body>  
+<div id="search-bar">
+ <input type="text" id="input" value="Hazorasp" placeholder="Write your country."><button id="button">Search</button></div>  
+<div id="weather"></div>
+<div id="error"><ul><li><h3>
+Something Went Wrong.</h3></li>
+<li><h4>Please Try Again Later.</h4>
+</li></div>
+
+
+<script>
+    var input = document.getElementById("input")
+    var d = document.getElementById("error")
+    var button = document.getElementById("button")
+var info = document.getElementById("weather")
+    var KELVIN = 273.15
+//date
+const lang = navigator.language; 
+    let date = new Date()  
+    let dayNumber = date.getDate()
+//    let dayName = date.toLocaleString(lang,{weekday: 'long'})   
+    let month = date.getMonth()    
+    let monthName = date.toLocaleString(lang,{month: 'long'})
+//    let year = date.getFullYear()    
+//search  
+button.addEventListener('click',function(){fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=8d24787fa0102884fed55aae44f24567')
+.then(response => response.json())
+.then(data => {
+  var name = data.name 
+  var country = data.sys.country
+  var temp = 
+  Math.floor(data.main.temp - KELVIN)
+  var hum = data.main.humidity
+  var about = data["weather"]["0"]["description"].toUpperCase()
+  var wind = Math.floor(data.wind.speed*2.237)
+  var icon=data["weather"]["0"]["icon"]
+var tempF= Math.floor(temp*1.80 + 32)
+  var iconurl="https://openweathermap.org/img/wn/"+icon +"@2x.png";
+  
+info.innerHTML=`<ul><li><h2>
+${dayNumber}-${monthName}</h2></li>
+<li><h3>${name},${country}</h3></li>
+<li><img src='${iconurl}'></li>
+<li><h1>${temp}&degC</h1>
+<h2>${tempF}&degF</h2></li>
+<li><h2>${about}</h2></li>
+<li><h4>Humidity - ${hum}%</h4>
+<h4> Windy - ${wind}km/h</h4></li>
+<li></li><li><h4>Created By Aziz Sobirov</h4></li><li>
+<a class="fa fa-facebook" href="https://www.facebook.com/aziz.dev2021" ></a>
+<a class="fa fa-github"   href="https://github.com/AzizSobirov" ></a><a class="fa fa-instagram" href="https://www.instagram.com/invites/contact/?i=2aie2d276889&utm_content=4k1xq38"></a>
+<a class="fa fa-code" href="https://www.sololearn.com/Profile/17554249/?ref=app"></a>    
+</li></ul>`
+})
+.catch(err => d.style.display="flex")
+})
+</script>
+<script>
+var images = [
+"https://i.imgur.com/ghGir1p.jpg",
+"https://i.imgur.com/QS9MRUx.jpg",
+"https://i.imgur.com/Pxaw02o.jpg",
+"https://i.imgur.com/mQyLNHa.jpg",
+"https://i.imgur.com/Hf4CPfp.jpg",
+"https://i.imgur.com/ghGir1p.jpg"
+]
+var i = Math.ceil(Math.random() * 5) 
+var body =document.querySelector("body")
+body.style.background= `url("${images[i]}")`  
+body.style.backgroundSize="cover"
+d.style.background= `url("${images[i]}")`  
+d.style.backgroundSize="cover"
+</script>          
+<style>
+        :root{
+    --bg:rgba(255,255,255,.7);
+    scroll-behavior:smooth;
+}*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box ;
+    font-family:"Quicksand";
+}body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+#error{
+    position:fixed ;
+    top:0;left:0;
+    height:100vh;width:100vw;
+    background:#fff;
+    justify-content:center;
+    display:none;align-items:center ;
+}
+ul img{
+    height:100px;width:100px;
+    background-size:cover;
+}
+ul{ margin-top:10px;
+    width:90vw;padding:20px;
+    background:var(--bg);
+}ul li{
+    width:100%;padding:5px;
+    list-style:none;display:flex;
+    align-items:center;font-weight:700;
+    justify-content:space-around;
+}ul li h1{font-size:44px;}
+#search-bar{
+    position:fixed;padding:10px;
+    top:0;left:0;display:flex;
+    height:55px;width:100vw;
+    background:var(--bg);
+}#search-bar input{
+    width:100%;height:100%;
+    outline:none;padding:5px;
+    border:2.5px solid #102626;
+    font-size:16px;font-weight:700;
+}#search-bar button{cursor:pointer;
+    width:120px;height:100%;
+    border:none;outline:none;
+    background:#102626;color:#fff;
+    font-size:18px;font-weight:700;
+}a{
+    cursor:pointer ;
+    font-size:24px;
+    color:#000;text-decoration:none ;
+}
+</style>
+    </body>
+</html>
