@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <title>Telegram Bot With Js</title>
+    </head>
+    <body>
+      
+<form>
+<input id="message" type="text" placeholder="Type your message.">
+<button id="button" type="reset">Send</button>
+</form>
+
+<script>
+//Bot token 
+const token = "1505568108:AAFbb_uZigfc_yfFuQJt2bnh0jLCHnq-trw"
+//"1723783316:AAFaNbZvaGCteXH3yqMKwBJaZegbib7MIG4"
+//Message
+  
+//Chat or group id
+  var id =  "-1001304043495"
+ // "-1001484645498";         
+//send Button
+document.getElementById("button").addEventListener("click",function(){
+var message = document.getElementById("message").value
+var mess = "<b>"+message+"</b>"   
+//api url
+var url = "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+id+"&text="+mess+"&parse_mode=html" 
+//get and send()
+var xttp =  new XMLHttpRequest(); 
+xttp.open("GET",url, true)
+xttp.send()
+console.log("Message Sended: " + mess)   
+})  
+
+
+</script>  
+<style>
+:root{scroll-behavior:smooth;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box ;
+    font-family:"Quicksand";
+}body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+#register{
+    height:100vh;width:100vw;
+    background:#eaebed;
+    position:fixed ;
+    top:0;left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+ul li{
+    text-align:center ;
+    list-style:none;    
+    font-weight:700;
+    padding:5px;
+}
+form{
+    height:55px;width:100vw;
+    padding:10px;
+    display:flex;align-items:center ;
+    justify-content:space-between;
+}
+input{
+    padding:5px;width:70%;height:100%;
+    font-size:16px;transition:0.5s;
+    border:none;outline:none;
+    box-shadow:0 0 0 2px #00adff;
+}
+input:focus::placeholder{
+    transition-duration:2s;
+    transform:translateX(-65vw);
+}
+button{
+    height:100%;width:30%;
+    font-size:18px;
+    border:none;outline:none;
+    background:#00adff;
+    cursor:pointer ;
+    color:#fff;font-weight:700;
+    box-shadow:0 0 0 2px #00adff;
+}
+</style> 
+    </body>
+</html>
