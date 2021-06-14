@@ -1,228 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" /><link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-<script crossorigin="anonymous" src="https://kit.fontawesome.com/3c5be74ba6.js"></script> 
-        <title>Online Shop</title>
-    </head>
-    <body>
-<!--Bar-->
-<div id="header-bar">
-<h1>Online Shop<span style="color:#e61e93;">.</span></h1>    
-<h1 onclick="on()" class="fa fa-bars"></h1></div>
-<h1 onclick="on()" class="fa fa-bars"></h1></div>
-<div id="slider">
-<div id="close" onclick="off()"></div>
-<div id="nav-bar"><ul>
-<li><h3>Online Shop<span style="color:#e61e93;">.</span>
-</h3></li>
-<li><a href="#logo" onclick="off()">Home</a></li>
-<li><a href="#product" onclick="off()">Featured</a></li>
-<li><a href="#new" onclick="off()">New</a></li>
-<li><a href="#about" onclick="off()">Subscribed</a></li>
-<!--Switch--><li style="display:flex;align-items:center;justify-content:space-between;">
-<h5>Night</h5>  
-<div id="switch" onclick="swch()">
- <div id="swch" onclick="off()"></div></div>
-<h5>Light</h5></li>
-</ul></div></div>
-<!--Products--> 
-<div id="logo"></div>
-<div id="product"></div>    
-<!--About-->
-<div id="about"><ul id="aboutt">
-<li><h1>Our News Letter<span>.</span></h1></li>    
-</ul></div>
- <script>
-var products = [
-{
-    name: "Fried Chickken",
-    price: "10$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "KrYyyW6/022-fried-chicken"
-},{
-    name: "Burger",
-    price: "2$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "0hnpdZ6/003-burger"
-},{
-    name: "Coca cola",
-    price: "1$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "8rhYXZ9/011-coke" 
-     
-},{
-    name: "Desert",
-    price: "10$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "QjGLX8L/037-dessert" 
-},{
-    name: "Frappe",
-    price: "7$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "j8NZmJ5/020-frappe" 
-},{
-    name: "Pizza",
-    price: "15$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "DCjFq9j/039-pizza"  
-},{
-    name: "Kebab",
-    price: "10$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "KjH3hpB/027-kebab"
-},{
-    name: "Spaghetti",
-    price: "6$",
-    about:"write write write write write write write write write write write write write write write write",
-    src: "1q4RCMW/045-spaghetti" 
-}
-]  
-for(var p=0;p<products.length;p++){
-var product =
-document.getElementById("product");
-product.innerHTML+=`<div class="product">
-<img src="https://i.ibb.co/${products[p].src}.png">
-<h2>${products[p].name}</h2>
-<button id="buy">Buy ${products[p].price}</button>
-</div>`  
-}      
- </script> 
- <style type="text/css" media="all">
-   *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box ;
-    font-family:"Quicksand";
-}
-#header-bar.active{
-    background:rgba(255,255,255,.9);
-    color:#000;
-}
-#header-bar{
-    position:fixed;top:0;
-    padding:2vh;
-    height:9vh;
-    width:100vw;
-    display:flex;
-    align-items:center ;
-    justify-content:space-between;
-    background:transparent ;
-    color:#fff;
-    z-index:3;
-    transition-duration:1s;
-}
-a{text-decoration:none;color:#fff;}
-ul li{
-    padding:2vh;
-    text-align:center ;
-    list-style:none;
-    font-weight:700;
-}
-#slider{
-    position:fixed ;
-    top:0;left:0;
-    height:100vh;
-    display:none;
-    align-items:center ;
-    justify-content:center ;
-    z-index:4;color:#fff;
-}
-body.swch #slider{filter:invert(1);}
-#nav-bar{padding:2vh;font-size:1.5em;
-height:100vh;width:70vw;
-background:rgba(0,0,0,.9);}
-#close{height:100vh;width:30vw;}
-#logo{
-    position:relative ;
-    top:0;left:0;
-    height:100vh;
-    width:100vw;
-    display:flex;
-    align-items:center ;
-    justify-content:center ; background:url("https://www.dropbox.com/s/4hjg06l1x48wtgg/arrangement-black-friday-clock-with-copy-space.jpg?dl=1");
-    background-size:cover;
-}
-#product{
-    width:100vw;
-    padding:10px;
-    display:grid;      grid-template-columns:repeat(3,1fr);  
-    grid-gap:0.5vh;
-    align-self:center;
-    justify-content:center;
-    background:#222;
-    overflow:hidden ;
-    text-align:center ;
-    color:#fff;
-}
-body.swch #product{
-background:#888;color:#000;}
-body.swch #product .product{
-background:#fff;color:#000;}
-#product .product{
-    padding:3vh;
-    display:grid;
-    color:#fff;
-    background:#333;
-    place-items:center ;
-    text-align:center ;
-    transition:0.5s;
-}
-#product .product img{
-    height:20vh;
-    width:20vh;
-    background-size:cover;
-}
-#product h2{padding:5px;}
-#product .product:hover{
-background:#e91e63;}
-#buy{
-    height:7vh;
-    width:40vw;
-    color:#fff;
-    font-weight:700;
-    font-size:1.2em;
-    background:#102626;
-    border:none;outline:none;
-    border-radius:100px;
-}
-#switch{
-    height:5vh;width:15vw;
-    display:flex;padding:1vh;
-    align-items:center ;
-    justify-content:flex-start;
-    border-radius:50px;
-    border:3px solid #fff;
-}
-body.swch #switch{justify-content:flex-end;}
-#swch{
-    height:2vh;width:2vh;
-    border-radius:50%;
-    box-shadow:0 0 0 3px #fff;
-}
-@media(max-width:400px){
-#product{grid-template-columns:repeat(2,1fr);}
-}
-#about{
-    height:90vh;
-    width:100vw;
-    color:#fff;
-    background:#222;
-}
- </style>
- <script type="text/javascript" charset="utf-8">
-   window.addEventListener("scroll",function(){var nav = 
-document.getElementById("header-bar");
-nav.classList.toggle("active",window.scrollY > 0);
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1" /><link href="https://fonts.googleapis.com/css?family=Quicksand|Handlee|Itim" rel="stylesheet">
+<meta name="theme-color" content="#A3370B">
+<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <title>Weather Forcast.</title>
+  </head>
+  <body>
+<div id="main"></div>   
+  
+  <script type="text/javascript" charset="utf-8">
+var main = document.getElementById("main")
+var URL = "https://api.weatherapi.com/v1/forecast.json"    
+var API = "8a1362221e524488b3e112953200305"
+
+//Fetch Icon 
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Uzbekistan&appid=8d24787fa0102884fed55aae44f24567")
+.then(res => res.json())
+.then(data => { console.log(data)
+var icon_url = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+document.getElementById("icon").innerHTML=`<img src="${icon_url}">`
+document.getElementById("desc").innerHTML= data.weather[0]. description
 })
+//Fetch API
+fetch(`${URL}?key=${API}&q=Hazorasp&days=3`)
+.then(response => response.json())
+.then(data =>  {console.log(data)
+//Location
+   var name = data.location.name
+   var region = data.location.region
+   var time = data.location.localtime
 
-function on(){
-document.getElementById("slider").style.display="flex";}
-function off(){
-document.getElementById("slider").style.display="none";}
+//Current  
+   var update_time = data.current.last_updated
+   var tempC = data.current.temp_c
+   var tempF = data.current.temp_f
+   var cloud = data.current.cloud
+   var humidity = data.current.humidity
+   
+main.innerHTML=`<ul id="current">
+  <li><h3>${name},${region}</h3>
+  <h3 style="padding:5px;">
+  ${time}</h3></li>
+  <li><h1>${tempC}&degC</h1></li>
+  <li><div id="icon"></div></li>
+  <li><h2 id="desc"></h2></li>
+  <li id="bar"><div id="forecast"><div id="line"></div></div></li>
+</ul>`
 
-function swch(){var swch= document.querySelector("body");
-swch.classList.toggle("swch");}
- </script>
-    </body>
+
+var day = new Date()
+var days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+var day_s = [
+  `${days[day.getDay() - 1]}`,
+  `${days[day.getDay()]}`,
+  `${days[day.getDay() + 1]}`
+  ]
+for(var f=0;f<day_s.length;f++){
+  document.getElementById("forecast").innerHTML+=`<div id="days" onclick="move(${f})"><h4>${day_s[f]}</h4>
+  </div>`
+}
+})
+function move(f){
+var line = document.getElementById("line");
+window.navigator.vibrate([20,10,20]);
+line.style.transform=`translateX(${f*100}%)`;
+line.style.transition="0.5s";
+}   
+  </script>
+  </body>
 </html>
